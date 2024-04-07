@@ -16,10 +16,20 @@ dependencies {
 }
 
 jar{
+
+    // for handling duplication strategy
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+
     manifest {
         attributes(
             'Main-Class': 'org.example.Main'
         )
+    }
+    //For installing all the packages in jar
+    from{
+        configurations.compileClasspath.collect{
+            it.isDirectory() ? it : zipTree(it)
+        }
     }
 }
 
