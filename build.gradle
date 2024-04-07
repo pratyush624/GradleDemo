@@ -25,7 +25,7 @@ jar{
             'Main-Class': 'org.example.Main'
         )
     }
-    //For installing all the packages in jar
+    //For installing all the packages in fat jar
     from{
         configurations.compileClasspath.collect{
             it.isDirectory() ? it : zipTree(it)
